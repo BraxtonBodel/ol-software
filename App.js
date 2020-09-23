@@ -1,21 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect } from 'react';
+import * as ScreenOrientation from 'expo-screen-orientation';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Provider as ReduxProvider } from 'react-redux';
+import Router from './router';
+import store from './redux';
+import * as firebase from 'firebase';
 
 export default function App() {
+  var firebaseConfig = {
+    apiKey: "AIzaSyCHYogCTHtuO3ZjA9-MCvxrcZ2KqdLU73g",
+    authDomain: "ol-software-253d2.firebaseapp.com",
+    databaseURL: "https://ol-software-253d2.firebaseio.com",
+    projectId: "ol-software-253d2",
+    storageBucket: "ol-software-253d2.appspot.com",
+    messagingSenderId: "718457237527",
+    appId: "1:718457237527:web:5e8c14d4c4df67ec832c52"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ReduxProvider store={store}>
+          <SafeAreaProvider>
+            <Router />
+          </SafeAreaProvider>
+    </ReduxProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
