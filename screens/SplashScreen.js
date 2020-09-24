@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
  const SplashScreen = () => {
     const navigation = useNavigation();
     firebase.auth().onAuthStateChanged(user =>{
-        navigation.navigate(user ? 'UsersList': 'Login')
+        navigation.navigate(user ? 'UsersListScreen': 'Login')
     })
     return (
         <View style={styles.container}>

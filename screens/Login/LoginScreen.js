@@ -22,12 +22,6 @@ const LoginScreen = () => {
           <LoginForm />
         </FormContainer>
         <FooterContainer>
-          <Text>¿Olvidaste tu contraseña?</Text>
-          <Text
-            style={{ color: '#07a8ca' }}
-          >
-            Recordar contraseña
-          </Text>
         </FooterContainer>
       </LoginContainer>
     );

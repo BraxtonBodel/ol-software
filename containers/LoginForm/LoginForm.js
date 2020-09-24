@@ -3,22 +3,24 @@ import { View } from 'react-native';
 import { Text, ErrorContainer, ErrorText } from './styles';
 import  Input  from '../../components/Input';
 import  ButtonLong  from '../../components/Button';
-import * as firebase from 'firebase'
+import { useNavigation } from '@react-navigation/native';
+import * as firebase from 'firebase';
 
 const LoginForm = () => {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState();
     const [errorMessage, setErrorMessage] = useState();
-    const fetching = false;
+    const fetching = true;
     const background = true;
     const width = '50%';
+    const navigation = useNavigation();
+
     const handleChange = () =>{
         firebase.auth().signInWithEmailAndPassword(user,password).catch((error) => setErrorMessage(error))
     }
 
-    const handleChangeText = (vl) => {
-        console.log(vl)
-        setPassword(password)
+    const handleRegisterChange = () => {
+        navigation.navigate('RegisterScreen')
     }
     return(
         <View>
@@ -42,7 +44,7 @@ const LoginForm = () => {
                 title="Iniciar sesión"
                 invert
                 loading={!fetching}
-                disabled={fetching}
+                disabled={false}
                 onPress={handleChange}
             />
             <ButtonLong
@@ -50,8 +52,8 @@ const LoginForm = () => {
                 title="Registrarse"
                 invert
                 loading={!fetching}
-                disabled={fetching}
-                onPress={handleChange}
+                disabled={false}
+                onPress={handleRegisterChange}
             />
         </View>
     );

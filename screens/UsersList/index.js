@@ -1,3 +1,3 @@
-import UsersList from './UsersList';
+import UsersListScreen from './UsersListScreen';
 
-export default UsersList;
+export default UsersListScreen;

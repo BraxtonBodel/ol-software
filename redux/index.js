@@ -8,7 +8,6 @@ import reducers from './ducks';
 import rootSaga from './sagas';
 
 const store = createStore(reducers, applyMiddleware);
-console.log(store)
 sagaMiddleware.run(rootSaga);
 
 export default store;
